@@ -1,20 +1,17 @@
-% a) Logical facts
-python_pass(arun).
-data_pass(arun).
+# Student results
+students = {
+    "Arun": ("Pass", "Pass"),
+    "Bala": ("Pass", "Fail"),
+    "Charan": ("Pass", "Pass"),
+    "Divya": ("Fail", "Pass")
+}
 
-python_pass(bala).
-data_fail(bala).
+# Check eligibility
+def eligible(student):
+    return student[0] == "Pass" and student[1] == "Pass"
 
-python_pass(charan).
-data_pass(charan).
-
-python_fail(divya).
-data_pass(divya).
-
-% b) Eligibility rule
-eligible(X) :-
-    python_pass(X),
-    data_pass(X).
-
-% c) Query to identify eligible students
-% ?- eligible(X).
+# Display eligible students
+print("Eligible students:")
+for name, result in students.items():
+    if eligible(result):
+        print(name)
